@@ -1,0 +1,35 @@
+{% extends "index.html" %} {% load static %} {% block content %}
+{% include "navbar_admin.html" %}
+<div class="container py-3">
+    <div class="row py-3">
+        <h2 class="mb-4">Categorías Existentes</h2>
+        {% if categories %}
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre de la Categoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                    <tr>
+                        <td>{{ category.name }}</td>
+                        <td>
+                            <a href="{% url 'edit-category' category.id %}"
+                                class="btn btn-primary btn-sm mb-2 mb-md-0">Actualizar</a>
+                            <a href="{% url 'delete-category' category.id %}" class="btn btn-danger btn-sm mt-md-0"
+                                onclick="return confirm('¿Estás seguro de querer eliminar esta categoría?');">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p>No hay categorías guardadas.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

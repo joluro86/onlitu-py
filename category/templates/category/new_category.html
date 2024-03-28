@@ -1,0 +1,16 @@
+{% extends "index.html" %} {% load static %} {% block content %}{% load crispy_forms_tags %}
+{% include "navbar_admin.html" %}
+<div class="container py-3">
+    <div class="row py-3">
+        <form class="col-md-9 m-auto" method="post" action="" role="form">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="row">
+                <div class="col text-end mt-2">
+                    <button type="submit" class="btn btn-success btn-lg px-3">Guardar Categoría</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,52 @@
+<!-- Start Content Page -->
+<div class="container-fluid py-">
+    <div class="col-md-6 m-auto text-center">
+        <div class="d-flex justify-content-center flex-wrap">
+            <!-- Dropdown Menu 1 -->
+            <div class="dropdown m-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Ventas
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                    <li><a class="dropdown-item" href="#">Nueva venta</a></li>
+                    <li><a class="dropdown-item" href="{% url 'product_list' %}">Listado de ventas</a></li>
+                </ul>
+            </div>
+            <!-- Dropdown Menu 2 -->
+            <div class="dropdown m-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Productos
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="{% url 'product_list' %}">Listado de productos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'product_create' %}">Nuevo producto</a></li>
+                </ul>
+            </div>
+            <!-- Dropdown Menu 3 -->
+            <div class="dropdown m-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Categorias
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                    <li><a class="dropdown-item" href="{% url 'categories' %}">Listado de categorías</a></li>
+                    <li><a class="dropdown-item" href="{% url 'add-category' %}">Agregar</a></li>
+                </ul>
+            </div>
+            <!-- Dropdown Menu 4 -->
+            <div class="dropdown m-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Géneros
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                    <li><a class="dropdown-item" href="{% url 'genders' %}">Listado de géneros</a></li>
+                    <li><a class="dropdown-item" href="{% url 'add-gender' %}">Agregar</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
