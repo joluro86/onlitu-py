@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+
+{% block content %}
+{% include "navbar_admin.html" %}
+<div class="container-fluid bg-light py-2">
+    <div class="col-md-9 m-auto text-center">
+        <h5 class="h5">Lista de Ventas</h5>
+    </div>
+</div>
+
+<div class="container py-2">
+    <div class="row">
+        <div class="col-md-12 m-auto">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th>Total</th> <!-- Asumiendo que tienes un método o campo para calcular el total -->
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for venta in ventas %}
+                    <tr>
+                        <td>{{ venta.date|date:"d/m/Y H:i" }}</td> <!-- Formateando la fecha -->
+                        <td>{{ venta.customer.name }}</td>
+                        <td>{{ venta.get_estate_display }}</td> <!-- Muestra el valor legible del estado -->
+                        <td>$ {{ venta.total }}</td>
+                        <!-- Asumiendo que 'total' es un campo o método del modelo Venta -->
+                        <td>
+                            <a href="#" class="btn btn-info btn-sm">Detalle</a>
+                            <a href="#" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="#" class="btn btn-danger btn-sm">Anular</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

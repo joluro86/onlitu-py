@@ -1,0 +1,36 @@
+{% load static %}
+<div class="col-lg-3">
+    <h1 class="h2 pb-4">Menú</h1>
+    <ul class="list-unstyled templatemo-accordion">
+        <li class="pb-3">
+            <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                Categorías
+                <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+            </a>
+
+            <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                {% for category in categories %}
+                <li><a class="text-decoration-none" href="{% url 'shop_by_category' category.id %}">
+                        {{category.name }}</a></li>
+                {% endfor %}
+            </ul>
+
+        </li>
+        <li class="pb-3">
+            <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                Productos mas vendidos
+                <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+            </a>
+            <ul id="collapseThree" class="collapse list-unstyled pl-3">
+                <li><a class="text-decoration-none" href="#">Bag</a></li>
+                <li><a class="text-decoration-none" href="#">Sweather</a></li>
+                <li><a class="text-decoration-none" href="#">Sunglass</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div>Filtros Aplicados:
+        {% for key, value in applied_filters_menu.items %}
+        <div>- {{ value }}</div>
+        {% endfor %}
+    </div>
+</div>

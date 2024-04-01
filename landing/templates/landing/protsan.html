@@ -1,0 +1,99 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="main_protsan">
+    <div class="div_img_protsan">
+        <img class="img_protsan" src="/media/products/protsan1.png" alt="">
+    </div>
+    <div class="div_derecho_protsan">
+        <div class="">
+            <h1 class="text-center mt-4 mb-4 titulo_principal_protsan">Mejora la Salud de tu Próstata con PROTSAN</h1>
+            <p>La fórmula 100% natural y definitiva para prevenir y mejorar tu salud prostática.</p>
+        </div>
+
+        <div class="">
+            <h2 class="text-center mt-4 mb-4 titulo_secundario_protsan">Beneficios de PROTSAN</h2>
+            <!-- Lista de Beneficios -->
+            <ul>
+                <li>Prevén el cáncer de próstata con un producto 100% natural y eficaz.</li>
+                <li>Mejora la salud de la próstata reduciendo la urgencia urinaria y la micción frecuente.</li>
+                <li>Aumenta tu energía y mejora tu vida íntima.</li>
+                <li>Reduce la posibilidad de infecciones urinarias.</li>
+                <li>Te puede ayudar a la reducción de sangrado después de la cirugía de próstata.</li>
+                <li>Elimina esos dolores de la espalda baja y el dolor pélvico crónico.</li>
+                <li>Te puede ayudar a mejorar los problemas urinarios y evitar que te levantes al baño muchas veces en
+                    la noche, disminuyendo la frecuencia urinaria.</li>
+            </ul>
+
+        </div>
+
+        <div class="">
+            <div class="container">
+                <h2 class="text-center  mt-4 mb-4 titulo_secundario_protsan">Recomendado por Doctores</h2>
+                <blockquote class="blockquote text-center">
+                    <p class="">"El consumo de una dieta abundante en carotenoides como el LICOPENO reduce
+                        significativamente el riesgo de enfermedades de la próstata."</p>
+                    <footer class="blockquote-footer">Especialistas en Salud Masculina</footer>
+                </blockquote>
+            </div>
+        </div>
+
+        <div class="">
+            <h2 class="text-center mt-4 mb-4 titulo_secundario_protsan">¡Obtén PROTSAN Ahora!</h2>
+            <p class="text-center">Disfruta de una vida íntima saludable y prevén problemas asociados a la próstata.
+            </p>
+            <div class="p-4 section_precios">
+                <p class="fw-bold text-center text-secondary mt-3 fs-2"><strong>Precios a tu alcance</strong></p>
+                <ul class="fs-6">
+                    <li>1 unidad cuesta solo <strong class="fw-bold  text-secondary">$79.900</strong></li>
+                    <li class="mt-2 mb-2">2 unidades <strong class="fw-bold  text-secondary">$134.900</strong> con
+                        descuento del </li>
+                    <li>Paga dos y lleva 3 por solo <strong class="fw-bold  text-secondary">$159.800</strong></li>
+                </ul>
+                {% include "pago_contraentrega.html" %}
+
+                <div class="text-center  mt-4 mb-4">
+                    <a href="{% url 'formulario_compra_protsan' %}" class="btn btn-success fw-bold">Pide PROTSAN Hoy</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="div_img_como_tomar_protsan m-auto">
+            <img class="img_como_tomar_protsan" src="/media/products/protsan_como_tomar.png" alt="">
+        </div>
+        <div class=" mt-4 mb-4">
+            <h2 class="text-center titulo_secundario_protsan">Los super componentes de Protsan</h2>
+            <!-- Lista de Beneficios -->
+            <ul>
+                <li>Sulfato de zinc</li>
+                <li>Stevia (Edulcorante)</li>
+                <li>Goma xanthan (Estabilizante)</li>
+                <li>Ácido cítrico (Acidulante)</li>
+                <li>Sorbato de potasio (Conservante)</li>
+                <li>Vitamina C</li>
+                <li>Vitamina E</li>
+                <li>Nispero</li>
+
+                <li class="fw-bold">Licopeno</li>
+                <img class="img_licopeno" src="/media/products/licopeno.jpeg" alt="">
+                <p>El <strong class="fw-bold">licopeno</strong>, una sustancia valiosa encontrada abundantemente en los
+                    tomates y sus
+                    productos
+                    derivados, representa una fuente crucial de este compuesto esencial. Este compuesto está vinculado a
+                    la disminución en la probabilidad de desarrollar diversos cánceres, destacando especialmente por su
+                    efecto en la reducción de la incidencia del cáncer de próstata.</p>
+                <p>Actuando como un antioxidante potente, el licopeno supera incluso a la vitamina E y la vitamina C en
+                    su capacidad para combatir la degeneración celular y los procesos que podrían conducir al cáncer.
+                </p>
+            </ul>
+
+        </div>
+        {% include "mas_informacion.html" %}
+    </div>
+</div>
+
+
+
+
+
+{% endblock content %}

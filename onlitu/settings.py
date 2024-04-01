@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'product',
     'gender',
     'venta',
+    'landing',
     'category',
     'crispy_forms',
     'crispy_bootstrap4',

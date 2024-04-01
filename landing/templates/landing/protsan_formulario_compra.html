@@ -1,0 +1,78 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<!-- Start Order Form -->
+<div class="container container_formulario_compra_protsan mt-4 mb-4">
+    <div class="row py-2">
+        <h4 class="h4 text-center text-success mt-4 mb-4">Ordena PROTSAN</h4>
+        <form class="col-md-9 m-auto" method="post" role="form" action="{% url 'guardar_venta' %}">
+            {% csrf_token %}
+            <div class="mb-3 div_cantidad_datos p-4">
+                <label class="d-block text-secondary fw-bold">Cantidad</label>
+                <div class="form-check my-2">
+                    <input class="form-check-input" type="radio" name="cantidad" id="opcion1" value="79900" required>
+                    <label class="form-check-label" for="opcion1">
+                        1 Unidad - $79,900
+                    </label>
+                </div>
+                <div class="form-check my-2">
+                    <input class="form-check-input" type="radio" name="cantidad" id="opcion2" value="134900" required>
+                    <label class="form-check-label" for="opcion2">
+                        2 Unidades - $134,900
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cantidad" id="opcion3" value="159800" required>
+                    <label class="form-check-label" for="opcion3">
+                        3 Unidades - $159,800
+                    </label>
+                </div>
+            </div>
+            <div class="div_cantidad_datos p-4 mb-4">
+                <div class="mb-3">
+                    <label class="text-secondary fw-bold" for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" required>
+                </div>
+                <div class="mb-3">
+                    <label class="text-secondary fw-bold" for="identificacion">Identificación</label>
+                    <input type="number" class="form-control" id="identificacion" name="identificacion" placeholder=""
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label class="text-secondary fw-bold" for="correo">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="correo" name="correo" placeholder="" required>
+                </div>
+                <div class="mb-3">
+                    <label class="text-secondary fw-bold" for="municipio">Municipio</label>
+                    <input type="text" class="form-control" id="municipio" name="municipio" placeholder="" required>
+                </div>
+                <div class="mb-3">
+                    <label class="text-secondary fw-bold" for="departamento">Departamento</label>
+                    <input type="text" class="form-control" id="departamento" name="departamento" placeholder=""
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label class="text-secondary fw-bold" for="direccion">Dirección de Envío</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="" required>
+                </div>
+                <div class="mb-3">
+                    <label class="text-secondary fw-bold" for="direccion">Celular</label>
+                    <input type="number" class="form-control" id="telefono" name="telefono" placeholder="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center mt-2 mb-4">
+                    <button type="submit" class="btn btn-success btn-lg px-3">
+                        Ordenar Ahora
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% include "mas_informacion.html" %}
+<!-- End Order Form -->
+
+{% endblock content %}

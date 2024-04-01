@@ -1,0 +1,138 @@
+.bug{
+    border: solid 2px red !important;
+}
+
+
+    .product-wap {
+        height: 480px; /* Alto fijo para el contenedor del producto */
+        display: flex;
+        flex-direction: column;
+    }
+    .product-wap .card-img {
+        height: 300px; /* Alto fijo para las imágenes */
+        width: 100%; /* Hace que la imagen se extienda para cubrir el ancho del contenedor */
+        object-fit: cover; /* Asegura que la imagen cubra el área sin perder sus proporciones, puede recortarse si es necesario */
+    }
+    .product-wap .card-body {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+
+    .product-name {
+        font-weight: bold !important; 
+        color: rgb(52, 49, 49);
+    }
+
+    .product-description {
+        font-size: 1rem !important; /* Hace el texto más pequeño */
+        margin-top: 2px !important;
+    }
+
+    .li-product-description {
+        margin-top: 0px !important;
+    }
+
+    .product-description, .cta p {
+        font-size: 20px;
+    }
+  
+    .main_protsan{
+        display: flex;
+        flex-direction: row; 
+        margin-bottom: 20px;
+        margin: auto;
+        max-width: 1200px;
+    }
+
+    .titulo_principal_protsan{
+        color: rgba(9, 89, 226, 0.906);
+    }
+
+    .titulo_secundario_protsan{
+        color: rgba(83, 136, 227, 0.906);
+    }
+
+    .div_derecho_protsan{
+        padding: 30px;
+    }
+
+   
+    .img_protsan{
+        max-width: 400px;
+    }
+
+    .div_img_como_tomar_protsan, .container_mas_informacion{
+        display: flex;
+        justify-content: center; /* Centra horizontalmente */
+        align-items: center; /* Centra verticalmente */         
+    }
+
+    .img_como_tomar_protsan, .img_mas_informacion{
+        margin-top: 30px;
+        margin-bottom: 20px;
+        height: 400px; 
+        border-radius: 10px;
+    }
+
+    .img_licopeno{
+        width: 220px;
+        margin: 20px 0px;
+    }
+
+    .section_precios{
+        background-color: rgb(245, 246, 241) ;
+    }
+
+    .container_formulario_compra_protsan{
+        width: 700px;
+        border-radius: 10px;
+        background-color: rgb(206, 219, 214);
+    }
+
+    .container_formulario_compra_protsan .div_cantidad_datos{
+        background-color: rgb(247, 247, 229);
+    }
+
+
+    .container_formulario_compra_protsan .form-control{
+        height: 32px;
+    }
+
+
+
+    @media (max-width: 769px) {
+        .main_protsan{
+            flex-direction: column; 
+        }
+        .div_derecho_protsan{
+            padding: 10px;
+        }
+
+        .div_img_como_tomar_protsan, .container_mas_informacion{
+            max-width: 90%;
+        }
+
+        .img_como_tomar_protsan, .img_mas_informacion{
+            height: 300px; 
+        }
+
+        .container_formulario_compra_protsan{
+            width: 100%;
+            border-radius: 0px;
+        }
+      }
+
+      @media (max-width: 769px) {
+
+        .div_img_protsan{
+            margin: auto;
+        }
+        
+        .img_protsan{
+            max-width: 300px;        
+      }
+    }
+
