@@ -30,5 +30,15 @@ class ProductGender(models.Model):
     class Meta:
         db_table = 'product_gender'
         managed = True
-        verbose_name = 'ProductGender'
+        verbose_name = 'Género producto'
         verbose_name_plural = 'ProductGenders'
+
+class ProductNumberPhone(models.Model):
+    product = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    number = models.BigIntegerField()
+
+    class Meta:
+        db_table = 'product_number_phone'
+        managed = True
+        verbose_name = 'Telefono producto'
+        verbose_name_plural = 'product_number_phone'

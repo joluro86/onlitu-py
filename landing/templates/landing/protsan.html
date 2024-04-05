@@ -20,7 +20,7 @@
           <span class="protsan_formula fw-bold">Protsan</span> es la fórmula 100% natural y definitiva para prevenir y mejorar tu salud prostática.
         </p>
         <div class="d-flex flex-column">
-          <span>Es común que los hombres enfrenten desafíos relacionados con la próstata, especialmente a medida que envejecen. De hecho, <span class="fw-bold">desde los 40 hasta los 55 años,</span> hasta tres cuartas partes de ellos experimentan problemas en esta área. Para aquellos que superan los 80 años, el riesgo aumenta, afectando a casi todos en algún grado.</span>
+          <span>Es común que los hombres enfrenten desafíos relacionados con la próstata, especialmente <span class="fw-bold">desde los 40 hasta los 55 años,</span> donde el 75% de ellos experimentan problemas en esta área.</span>
           <span class="mt-4 mb-4"><span class="fw-bold">Nuestra fórmula única</span> para el cuidado de la próstata se basa en componentes de origen natural que son tanto efectivos como seguros, eliminando la preocupación por efectos secundarios adversos. Ofrecemos una opción confiable y económica frente a los tratamientos médicos convencionales y procedimientos quirúrgicos.</span>
           <span>Además, nuestro suplemento está diseñado para <span class="fw-bold">aliviar los síntomas incómodos</span> como las ganas urgentes de orinar y las visitas frecuentes al baño, mejorando a su vez el flujo urinario.</span>
         </div>
@@ -68,24 +68,31 @@
           <p class="fw-bold text-center text-secondary mt-3 fs-2">
             <strong>Precios a tu alcance</strong>
           </p>
-          <ul class="fs-6">
-            <li>
-              1 unidad cuesta solo <strong class="fw-bold text-secondary">$79.900</strong>
-            </li>
-            <li class="mt-2 mb-2">
-              2 unidades <strong class="fw-bold text-secondary">$134.900</strong> con descuento del
-            </li>
-            <li>
-              Paga dos y lleva 3 por solo <strong class="fw-bold text-secondary">$159.800</strong>
-            </li>
-          </ul>
-          {% include 'pago_contraentrega.html' %}
-
-          <div class="text-center mt-4 mb-4">
-            <a href="{% url 'formulario_compra_protsan' %}" class="btn btn-success fw-bold">Pide PROTSAN Hoy</a>
-          </div>
+          <form action="{% url 'agregar_a_carrito' %}" method="post">
+            {% csrf_token %}
+            <ul class="fs-6">
+              <input type="hidden" id="producto_id" name="producto_id" value="{{protsan.id}}" required>
+              <li>
+                <input type="radio" id="cantidad" name="cantidad" value="1" required>
+                <label for="promo1"><span class="mx-2 fw-bold">1 unidad</span> cuesta solo <strong class="fw-bold text-secondary">$79.900</strong></label>
+              </li>
+              <li class="mt-2 mb-2">
+                <input type="radio" id="cantidad" name="cantidad" value="2" required>
+                <label for="promo2"><span class="fw-bold mx-2">Promo 1:</span> 2 unidades <strong class="fw-bold text-secondary">$134.900</strong> con descuento del 16%</label>
+              </li>
+              <li>
+                <input type="radio" id="cantidad" name="cantidad" value="3" required>
+                <label for="promo3"><span class="fw-bold mx-2">Promo 2:</span> Paga dos y lleva 3 por solo <strong class="fw-bold text-secondary">$159.800</strong></label>
+              </li>
+            </ul>
+            
+            <div class="text-center mt-4">
+              <button type="submit" class="btn btn-success fw-bold">Agregar al Carrito</button>
+            </div>
+          </form>
         </div>
-      </div>
+    </div>
+    
       <div class="div_img_como_tomar_protsan m-auto">
         <img class="img_como_tomar_protsan" src="/media/products/protsan_como_tomar.png" alt="" />
       </div>
@@ -110,7 +117,7 @@
           <p>Actuando como un antioxidante potente, el licopeno supera incluso a la vitamina E y la vitamina C en su capacidad para combatir la degeneración celular y los procesos que podrían conducir al cáncer.</p>
         </ul>
       </div>
-      {% include 'mas_informacion.html' %}
+      {% include 'mas_informacion.html' with whatsapp_number=celular %}
       <div class="">
         <h2 class="text-center mt-4 mb-4 titulo_secundario_protsan">Preguntas mas frecuentes</h2>
         <!-- Lista de Beneficios -->

@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% load filters %}
+
+{% block content %}
+<h1>Carrito de Compras</h1>
+
+{% if request.session.carrito %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product_id, data in request.session.carrito.items %}
+                {% with producto=productos|get_item:product_id %}
+                    <tr>
+                        <td>{{ producto.name }}</td>
+                        <td>{{ data.cantidad }}</td>
+                        <td>{{ producto.price }}</td>
+                        <td>{{ producto.price|multiply:data.cantidad }}</td>
+                    </tr>
+                {% endwith %}
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="text-right">
+        <strong>Total: </strong>{{ total }}
+    </div>
+{% else %}
+    <p>Tu carrito está vacío.</p>
+{% endif %}
+{% endblock content %}
+
+

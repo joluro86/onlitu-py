@@ -1,118 +1,108 @@
-{% extends "index.html" %}
+{% extends 'index.html' %}
 {% load humanize %}
 {% block content %}
-
-<!-- Modal -->
-<div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+  <!-- Modal -->
+  <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="w-100 pt-1 mb-5 text-right">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="w-100 pt-1 mb-5 text-right">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="" method="get" class="modal-content modal-body border-0 p-0">
+        <div class="input-group mb-2">
+          <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Buscar..." />
+          <button type="submit" class="input-group-text bg-success text-light"><i class="fa fa-fw fa-search text-white"></i></button>
         </div>
-        <form action="" method="get" class="modal-content modal-body border-0 p-0">
-            <div class="input-group mb-2">
-                <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Buscar...">
-                <button type="submit" class="input-group-text bg-success text-light">
-                    <i class="fa fa-fw fa-search text-white"></i>
-                </button>
-            </div>
-        </form>
+      </form>
     </div>
-</div>
+  </div>
 
-<!-- Start Content -->
-<div class="container py-5">
+  <!-- Start Content -->
+  <div class="container py-5">
     <div class="row">
-        {% include "menu_izquierdo.html" %}
-        <div class="col-lg-9">
-            <div class="row">
-                <div class="col-md-6">
-                    <ul class="list-inline shop-top-menu pb-3 pt-1">
-                        <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none mr-3" href="{% url 'tienda' %}">Todo</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none mr-3" href="{% url 'ellas' %}">Ellas</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none" href="{% url 'ellos' %}">Ellos</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-6 pb-4">
-                    <div class="d-flex">
-                        <form class="w-100" method="get" action="{% url 'ordenar_por_precio' %}">
-                            <input name="applied_filter" type="hidden" value="{{ applied_filters }}">
-                            <select name="ordenar_por" class="form-control" onchange="this.form.submit()">
-                                <option value="">Ordenar por...</option>
-                                <option value="precio_mas_bajo">Precio más bajo</option>
-                                <option value="precio_mas_alto">Precio más alto</option>
-                                <option value="orden_alfabetico">Orden alfabético</option>
-                            </select>
-                        </form>
-                    </div>
-                </div>
-
+      {% include 'menu_izquierdo.html' %}
+      <div class="col-lg-9">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-inline shop-top-menu pb-3 pt-1">
+              <li class="list-inline-item">
+                <a class="h3 text-dark text-decoration-none mr-3" href="{% url 'tienda' %}">Todo</a>
+              </li>
+              <li class="list-inline-item">
+                <a class="h3 text-dark text-decoration-none mr-3" href="{% url 'ellas' %}">Ellas</a>
+              </li>
+              <li class="list-inline-item">
+                <a class="h3 text-dark text-decoration-none" href="{% url 'ellos' %}">Ellos</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6 pb-4">
+            <div class="d-flex">
+              <form class="w-100" method="get" action="{% url 'ordenar_por_precio' %}">
+                <input name="applied_filter" type="hidden" value="{{ applied_filters }}" />
+                <select name="ordenar_por" class="form-control" onchange="this.form.submit()">
+                  <option value="">Ordenar por...</option>
+                  <option value="precio_mas_bajo">Precio más bajo</option>
+                  <option value="precio_mas_alto">Precio más alto</option>
+                  <option value="orden_alfabetico">Orden alfabético</option>
+                </select>
+              </form>
             </div>
-            <div class="row">
-                {% for product in products %}
-
-                <div class="col-lg-4 col-md-6 col-sm-12">
-
-                    <div class="card mb-4 product-wap rounded-0">
-                        <a href="{% url 'landing_product' product.id %}">
-                            <!-- Imagen del producto -->
-                            <img class="card-img rounded-0 img-fluid" alt="" src="{{ product.imagen.url }}">
-
-                            <!-- Cuerpo de la tarjeta -->
-                            <div class="card-body d-flex flex-column">
-                                <a href="shop-single.html" class="text-decoration-none mb-auto">
-                                    <h5 class="product-name mb-1">{{ product.name }}</h5>
-                                </a>
-                                <!-- Altura mínima para la descripción -->
-                                <p class="li-product-description mb-2" style="min-height: 60px;">
-                                    {{ product.description}}
-                                </p>
-                                <!-- Sección de estrellas -->
-                                <div class="d-flex justify-content-center mb-2">
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </div>
-                                <!-- Precio en la parte inferior -->
-                                <p class="text-center mt-auto">
-                                    <strong>Precio:</strong> {{ product.price|floatformat:"0"|intcomma }}
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-
-                </div>
-
-                {% endfor %}
-            </div>
-
-            <div div="row">
-                <ul class="pagination pagination-lg justify-content-end">
-                    <li class="page-item disabled">
-                        <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#"
-                            tabindex="-1">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-                            href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="#">3</a>
-                    </li>
-                </ul>
-            </div>
+          </div>
         </div>
+        <div class="row">
+          {% for product in products %}
+            <div class="col-12 col-sm-4 ">
+              <div class="card mb-4 product-wap rounded-0">
+                <a href="{% url 'landing_product' product.id %}">
+                  <!-- Imagen del producto -->
+                  <img class="card-img rounded-0 img-fluid" alt="" src="{{ product.imagen.url }}" />
+                  <!-- Cuerpo de la tarjeta -->
+                  <div class="card-body d-flex flex-column">
+                    <a href="shop-single.html" class="text-decoration-none mb-auto"><h5 class="product-name mb-1">{{ product.name }}</h5></a>
+                    <!-- Altura mínima para la descripción -->
+                    <span class="li-product-description mb-2" style="min-height: 60px;">{{ product.description }}</span>
+                    <!-- Sección de estrellas -->
+                    <div class="d-flex justify-content-center mb-2">
+                      <i class="text-warning fa fa-star"></i>
+                      <i class="text-warning fa fa-star"></i>
+                      <i class="text-warning fa fa-star"></i>
+                      <i class="text-warning fa fa-star"></i>
+                      <i class="text-muted fa fa-star"></i>
+                    </div>
+                    <!-- Precio en la parte inferior -->
+                    <span class="text-center mt-auto">
+                      <strong>Precio:</strong> {{ product.price|floatformat:'0'|intcomma }}
+                    </span>
+                    <!-- Botón Agregar al Carrito -->
+                    <form action="#" method="post" class="text-center">
+                      {% csrf_token %}
+                      <input type="hidden" name="producto_id" value="{{ product.id }}" />
+                      <input type="hidden" name="cantidad" value="1" />
+                      <button type="submit" class="btn btn-primary mt-2">Agregar al Carrito</button>
+                    </form>
+                  </div>
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        
 
+        <div div="row">
+          <ul class="pagination pagination-lg justify-content-end">
+            <li class="page-item disabled">
+              <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#" tabindex="-1">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="#">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="#">3</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-</div>
-<!-- End Content -->
-
-{% endblock content %}
+  </div>
+  <!-- End Content -->
+{% endblock %}

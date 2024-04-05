@@ -3,30 +3,6 @@
 }
 
 
-.product-wap {
-    height: 480px;
-    /* Alto fijo para el contenedor del producto */
-    display: flex;
-    flex-direction: column;
-}
-
-.product-wap .card-img {
-    height: 300px;
-    /* Alto fijo para las imágenes */
-    width: 100%;
-    /* Hace que la imagen se extienda para cubrir el ancho del contenedor */
-    object-fit: cover;
-    /* Asegura que la imagen cubra el área sin perder sus proporciones, puede recortarse si es necesario */
-}
-
-.product-wap .card-body {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-
 .product-name {
     font-weight: bold !important;
     color: rgb(52, 49, 49);
@@ -55,7 +31,8 @@
     max-width: 1200px;
 }
 
-.titulo_principal_protsan, .protsan_formula {
+.titulo_principal_protsan,
+.protsan_formula {
     color: rgba(9, 89, 226, 0.906);
 }
 
@@ -63,7 +40,7 @@
     color: rgba(83, 136, 227, 0.906);
 }
 
-.titulo_sec_verde{
+.titulo_sec_verde {
     color: rgb(5, 136, 75);
 }
 
