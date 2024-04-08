@@ -1,21 +1,26 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from product.models import Producto
 from venta.models import VentaDetail, Venta, Customer
 from django.http import HttpResponseBadRequest
-import json
+from django.views.decorators.http import require_POST
 
 def agregar_a_carrito(request):
     if request.method == 'POST':
         product_id = request.POST.get('producto_id')
         cantidad = request.POST.get('cantidad')
+        precio = 0
+        
+        if int(cantidad)==1:
+            precio=79900
+        elif int(cantidad)==2:
+            precio=134900
+        elif int(cantidad)==3:
+            precio=159800
 
         # Verificar si alguno de los valores necesarios es None
         if product_id is None or cantidad is None:
-            print("product id")
-            print(product_id)
-            print("cantidad")
-            print(cantidad)
-            # Respuesta de error si no se encuentran todos los datos necesarios
             return HttpResponseBadRequest("Datos incompletos para agregar al carrito.")
 
         try:
@@ -28,10 +33,12 @@ def agregar_a_carrito(request):
 
         if product_id in carrito:
             carrito[product_id]['cantidad'] += cantidad
+            carrito[product_id]['price'] += precio
         else:
-            carrito[product_id] = {'cantidad': cantidad}
+            carrito[product_id] = {'cantidad': cantidad, 'price': precio}
         
         request.session['carrito'] = carrito
+        print(carrito)
 
         return redirect('ver-carrito')
     else:
@@ -46,15 +53,29 @@ def ver_carrito(request):
 
     for product_id, data in carrito.items():
         producto = Producto.objects.get(id=product_id)
-        subtotal = producto.price * data['cantidad']
+        subtotal = data['price']
         total += subtotal
         productos_carrito.append({
             'producto': producto,
             'cantidad': data['cantidad'],
+            'price': producto.price,
             'subtotal': subtotal,
+            'total': total,
         })
-
+        
     return render(request, 'ver_carrito.html', {'productos_carrito': productos_carrito, 'total': total})
+
+@require_POST
+def eliminar_del_carrito(request, product_id):
+    carrito = request.session.get('carrito', {})
+    product_id_str = str(product_id)
+    
+    if product_id_str in carrito:
+        carrito[product_id_str]
+        del carrito[product_id_str]
+        request.session['carrito'] = carrito
+
+    return HttpResponseRedirect(reverse('ver-carrito'))
 
 def guardar_venta(request):
     if request.method == 'POST':
@@ -101,6 +122,12 @@ def guardar_venta(request):
         del request.session['carrito']
 
         return render(request, 'landing/compra_exitosa.html')
+
+def limpiar_carrito(request):
+    # Asignar un nuevo diccionario vacío al 'carrito' en la sesión
+    request.session['carrito'] = {}
+    request.session.modified = True  # Asegurar que la sesión se marque como modificada para guardar los cambios
+    return redirect('ver-carrito')
 
 
 def guardar_venta(request):

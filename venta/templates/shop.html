@@ -74,7 +74,7 @@
                       <strong>Precio:</strong> {{ product.price|floatformat:'0'|intcomma }}
                     </span>
                     <!-- Botón Agregar al Carrito -->
-                    <form action="#" method="post" class="text-center">
+                    <form action="{% url 'agregar_a_carrito' %}" method="post" class="text-center">
                       {% csrf_token %}
                       <input type="hidden" name="producto_id" value="{{ product.id }}" />
                       <input type="hidden" name="cantidad" value="1" />

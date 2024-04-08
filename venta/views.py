@@ -9,6 +9,7 @@ applied_filters = {}
 
 applied_filters_menu = {}
 
+
 def index(request):
     return render(request, 'index.html')
 
